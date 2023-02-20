@@ -114,3 +114,36 @@ Two types modules
     - debug
     - async
     - lodash
+
+## Python
+
+Python Package Manager (pip)
+
+Python cmds
+
+```sh
+pip
+#=> for python2
+pip2 -V
+#=> for python3
+pip3 -V
+pip install flask
+#=> see location where package is installed
+pip show flask
+#=> print where the interpretor will look for packages
+python2 -c "import sys; print(sys.path)"
+pip install flask --upgrade
+pip unstall flask
+```
+
+Requirements
+
+- Can list dependencies in `requirements.txt`
+  - One location
+  - Can check into source control
+  - Specify versions
+- Run `pip install -r requirements.txt`
+
+Other package managers
+- `easy_install`
+- `wheels`
