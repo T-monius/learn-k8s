@@ -30,3 +30,56 @@ Packages
 Build
 - Dev -> Build -> Test -> Deliver
   - Important to konw what to automate.
+
+## Java
+
+Many organization stuck at version 8
+- Version 9 introduced breaking changes and licensing terms
+
+### Retrieve java
+```sh
+wget https://download.java.net....
+#=> openjdk-13.0.2_linux-x64_bin.tar.gz
+tar -xzf openjdk-13.0.2_linux-x64_bin.tar.gz
+#=> /opt/jdk-13/bin/java-version
+
+# Check java version w/ java command
+/jdk-13/bin/java -version
+
+java version
+```
+
+
+Java Development Kit (JDK)
+- Develop
+- Build
+- Run
+
+### Building and running a Java application
+- Compile w/ java compiler (i.e. `javac`)
+- Run w/ `java` cmd
+
+An archiver like JAR (Java Archive) help compile several packages into a single file.
+
+```sh
+jar cf MyApp.jar MyClass.class Service1.class Service2.class ...
+
+java -jar MyApp.jar
+```
+
+### Writing Java docs
+
+```sh
+# Create documentation that has a nice html format
+javadoc -d doc MyClass.java
+```
+
+### Java Build Tools
+
+- Maven
+- Gradle
+- Ant
+
+Ant, for example, uses an XML configuration file to compile, test, and document with the `ant` cmd
+
+
