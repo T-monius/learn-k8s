@@ -82,4 +82,35 @@ javadoc -d doc MyClass.java
 
 Ant, for example, uses an XML configuration file to compile, test, and document with the `ant` cmd
 
+## NodeJS
 
+NPM Commands
+
+```sh
+npm -v
+npm search file
+npm install file
+# Check the search path of node (i.e. local, global, etc.)
+node -e "console.log(module.paths)"
+#=> ['/app/node_modules', '/node_modules']
+```
+
+Two types modules
+1. Built-in
+  - Installed when Node is
+  - `/usr/lib/node_modules/npm/node_modules`
+  - Examples:
+    - fs
+    - http
+    - os
+    - events
+    - tls
+    - url
+2. External
+  - `/usr/lib/node_modules`
+  - Examples:
+    - express
+    - react
+    - debug
+    - async
+    - lodash
