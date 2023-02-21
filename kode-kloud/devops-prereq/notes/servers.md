@@ -69,3 +69,31 @@ Any changes in the configuration require a restart (`service httpd restart`)
 
 Each virtual host configuration can be moved to it's own configuration file.
 - `Include` keyword would make external configuration files avaailable from main config file.
+
+## Apache Tomcat
+
+Provides an environment to host Java based web applications
+
+Must have jave installed
+Install Tomcat from [Apache Tomcat download page](http://tomcat.apache.org/download-80.cg)
+
+```sh
+wget http://tomcat.apache.org/tomcat/tomcat-8/v8.5.53/bin/apache-tomcat-8.5.53.tar.gz
+
+tar xvf apache-tomcat-8.8.53.tar
+
+# start server by running startup script in bin directory
+
+./apache-tomcat-8.5.53/bin/startup.sh
+```
+
+Visit port 8080 to see built in webpage
+
+In Tomcat directory,
+- Within `bin`, `.bat` files are for Windows and `.sh` for linux
+- In `conf` directory store multiple configurations
+- `webapps` stores applications run by Tomcat
+
+Before deploying, package w/ `war` instead of `jar` since it's a web application. Alternatively, build packages like Maven or Gradle can package.
+
+If Tomcat is running when the `war` file is placed in the `webapps` directory, Tomcat will automatically detect it.
