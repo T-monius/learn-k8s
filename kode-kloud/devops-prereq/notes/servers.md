@@ -97,3 +97,30 @@ In Tomcat directory,
 Before deploying, package w/ `war` instead of `jar` since it's a web application. Alternatively, build packages like Maven or Gradle can package.
 
 If Tomcat is running when the `war` file is placed in the `webapps` directory, Tomcat will automatically detect it.
+
+## Flask
+
+Typical Python Project Structure
+
+- application
+  - LICENSE
+  - README.md
+  - requirements.txt
+  - main.py
+  - utils
+  - tests
+  - config
+  - router
+  - services
+  - db
+  - core
+
+Starting a python app locally usually runs in on port 5000
+
+Production deployment
+- Gunicorn
+  - `gunicorn main:app`
+  - Gunicorn will host a serve that will send the app at port `8000` by default and can have multiple workers running the code.
+- uWSGI
+- Gevent
+- Twisted Web
