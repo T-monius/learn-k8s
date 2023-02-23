@@ -117,3 +117,73 @@ mysql> GRANT SELECT, UPDATE ON *.* TO 'john'@'%';
 # Show privileges for a user
 mysql> SHOW GRANTS FOR 'john'@'localhost';
 ```
+
+## MongoDB
+
+2 Versions
+- Community
+- Developer
+
+Basics
+- Stores 'documents'
+- Multiple documents form a 'collection'
+
+### Install
+
+Available in cloud or on a server
+
+Install MongoDB server to install locally.
+- Enterprise and community versions available
+
+[Tutorial 1](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-centos-7 'Digital Ocean Tutorial')
+[Tutorial 2](https://linuxize.com/post/how-to-install-mongodb-on-centos-7/ 'Linuxize Tutorial')
+
+```sh
+yum install mongodb-org
+systemctl start mongod
+systemctl status mongod
+```
+
+Logs stored at `/var/log/mongodb/mongodb.log`
+Listens on `localhost`
+Default port `27017`
+
+Settings can be changed in `/etc/mongod.conf`
+
+### Mongo Shell
+
+```sh
+> mongo
+```
+
+By default, access control is not enabled.
+```mongo
+mongo> show dbs
+# Create and switch to a new database 'school'
+mongo> use school
+# Display current db
+mongo> db
+# Create a new collection
+mongo> db.createCollection("persons")
+#=> { "ok" : 1 }
+mongo> show collections
+#=> persons
+# Add data
+mongo> db.persons.insert(
+        "name": "John Doe",
+        "age": 45,
+        "location": "New York",
+        "salary":5000
+      )
+# Query data
+mongo> db.persons.find()
+#=> {
+      "id": objectID("5e7669bdc3142510d62f5e")
+      "name": "John Doe",
+      "age": 45,
+      "location": "New York",
+      "salary":5000
+    }
+```
+
+Each document automaticcaly assigned an `id`
