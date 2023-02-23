@@ -158,3 +158,62 @@ pm2 start app.js
 # Run 4 instances
 pm2 start app.js -i 4
 ```
+
+## IP Addresses and Ports from a Wed Application Perspective
+
+IP Address
+- IP address is assigned to an interface
+  - Wired interfaces to connect to a LAN network
+  - Wireless interfaces to connect to a wifi
+  - ETc.
+
+A laptop (ex. enp0s3) connected to a switch via an ethernet port on a home network would get an IP address assigned (ex. 10.0.2.15)
+
+```sh
+ip addr show
+#=> 2: enp0s3: ...
+# state of UP group default qlen 1000
+# ...
+# inet 10.0.2.15/24 ...
+```
+
+Connecting the same laptop a difference interface like a wifi connection (wlp0s2), it would receive a separate IP address for the new interface (10.0.2.16).
+
+```sh
+ip addr show
+#=> 2: enp0s3: ...
+# state of UP group default qlen 1000
+# ...
+# inet 10.0.2.15/24 ...
+
+# 3: wlp0s2 ...
+# ...
+# inet
+# inet 10.0.2.16 ...
+```
+
+The same laptop now has two separate IP addresses on the same network.
+
+Each network interface card is divided into multiple logical components called __ports__.
+
+A server listens on a given port.
+
+To make an application available on any connected interface, the _host must be declared on `0.0.0.0`_.
+
+When no host is specified, the server listens automatically on the loop back interface (i.e. `127.0.0.1`)
+
+Information about the _loop back interface_ is also available w/ `ip addr show` with name `lo`:
+
+```sh
+ip addr show
+#=> 1: lo: <LOOPBACK,UP,LOWER,LOWER_UP>
+# ...
+# inet 127.0.0.1.0/8 scope hose lo
+# ...
+```
+
+Every host has a loopback set up.
+- Anything sent to loopback is like referencing one's self.
+- From within the host, to tests one's own application, it can be references.
+- Not available from any other host.
+- `localhost` is the default name.
