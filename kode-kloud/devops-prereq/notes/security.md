@@ -51,7 +51,7 @@ cat ~/ssh/authorized_keys
 # ssh-rsa AAAXC...
 ```
 
-Securely transfer key to server w/ assymetric encryption.
+Securely transfer symmetric key to server w/ assymetric encryption.
 ```sh
 openssl genrsa -out my-bank.key 1024
 #=> my_bank.key
@@ -60,11 +60,13 @@ openssl rsa -in my-bank.key -pub > mybank.pem
 #=> my-bank.key mybank.pem
 ```
 
-When the user first accesses the web server using https, he gets the public key from the server, and one can assume a sniffig attaxker also gains access to the public key.
-- The users browser encrypts the symmetric key using the public key provided by the server.
-- Symmetric sent to server
-- Attacker gains access to symmetric key
-- Attacker does not have private key to decrypt and retrieve symmetric key
-- Symmetric key now only available to user and server
+Scenario: __transfer user's _symmetric key_ to server__
 
-[MINUTE 8:14](https://kodekloud.com/topic/ssl-tls-basics/ 'SSL & TLS Basics')
+When the user first accesses the web server using https, he gets the asysmetric public key from the server, and one can assume a sniffig attacker also gains access to the public key.
+
+- The user's browser encrypts locally stored the _symmetric_ key using the public key provided by the server.
+- Symmetric key sent to server
+- Attacker gains access to symmetric key but can't decrypt
+  - Attacker does not have private key to decrypt and retrieve symmetric key
+  - __Server _only_ has assymetric _private key_ __
+- Symmetric key now only available to user and server
