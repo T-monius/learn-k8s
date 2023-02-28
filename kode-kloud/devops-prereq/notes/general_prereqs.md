@@ -43,3 +43,15 @@ Banana:
     Fat: 0.4 g
     Carb: 27 g
 ```
+
+## JSON PATH
+
+JSON PATH is a query language that helps easily extract data.
+
+Root element signified by a `$`.
+- Queries preceded by it: `$.vehicles`
+- For a list `$[0]`
+
+`?` specifies a criteria/filter
+- `$[?( @ > 40)]` where `@` signifies 'each item in the lsit'
+- Operator examples: `>`, `<`, `==`, `!=`, `in`, `nin`
